@@ -25,7 +25,7 @@ public class TradeManageInsert {
 
 
         int i = 1;
-        for(int y = 1;y<1000;y++){
+        for(int y = 1;y<5000;y++){
 
             Double area = getArea();
             Double totalPrice = getTotalPrice();
@@ -182,7 +182,7 @@ public class TradeManageInsert {
 
         BigDecimal bigDecimal = new BigDecimal(d1);
 
-        double d2 = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_DOWN).doubleValue();
+        double d2 = bigDecimal.setScale(1,BigDecimal.ROUND_HALF_DOWN).doubleValue();
         return d2;
     }
 
