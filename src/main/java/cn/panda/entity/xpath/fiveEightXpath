@@ -1,0 +1,63 @@
+58Xpath
+                 originalLink;    //原始链接    //从page获取
+
+                 title;       //标题
+                //div[@class='col detailPrimary mb15']//div[@class='mainTitle']//div[@class='bigtitle']//h1
+
+                 publishDate; //发布时间
+                //div[@class='col detailPrimary mb15']//div[@class='mainTitle']//div[@class='mtit_con c_999 f12 clearfix']//ul[@class='mtit_con_left fl']//li[@class='time']
+
+                 price;       //售价
+                //div[@class='su_con']//span[@class='bigpri arial']
+
+                 houseType;   //户型
+                //div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary']//ul[@class='suUl']//li[4]//div[@class='su_con']
+
+                 location;    //位置，如泰山区，岱岳区
+                
+
+                 houseAdress; //房屋地址
+
+
+                 contactName; //联系人
+
+
+                 phone;       //手机号
+
+
+                 decType;     //装修类型
+
+
+                 houseCategory;   //住宅类别
+
+
+                 keepYear;      // 产权
+
+
+                 floor;       //楼层
+
+
+                 buildYear;   //建筑年代
+
+
+                 orientation; //朝向
+
+
+                 description; //描述
+
+
+                 imgUlr;      //房屋照片
+
+
+                 buildStructure; //建筑结构
+
+
+                 houseSellingType; //房屋类型
+
+
+
+                 //后期生成
+                      id;
+                 addDate;     //添加日期
+                 isDelete;    //是否被删除
+                 isUsed;      //是否被用过

@@ -1,0 +1,26 @@
+create table fiveeighthouse
+(
+     id INT(20) ,
+     originalLink VARCHAR(20) ,
+     title  VARCHAR(20) ,
+     publishDate  VARCHAR(20) ,
+     price  VARCHAR(20) ,
+     houseType  VARCHAR(20) ,
+     location  VARCHAR(20) ,
+     houseAdress  VARCHAR(20) ,
+     contactName  VARCHAR(20) ,
+     phone  VARCHAR(20) ,
+     decType  VARCHAR(20) ,
+     houseCategory  VARCHAR(20) ,
+     keepYear  VARCHAR(20) ,
+     floor  VARCHAR(20) ,
+     buildYear  VARCHAR(20) ,
+     orientation  VARCHAR(20) ,
+     description  VARCHAR(20) ,
+     imgUlr  VARCHAR(20) ,
+     buildStructure  VARCHAR(20) ,
+     houseSellingType  VARCHAR(20) ,
+     addDate datetime,
+     isDelete INT(10) ,
+     isUsed tinyint
+);

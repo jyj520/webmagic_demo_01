@@ -25,7 +25,7 @@ public class TradeManageInsert {
 
 
         int i = 1;
-        for(int y = 1;y<5000;y++){
+        for(int y = 1;y<30;y++){
 
             Double area = getArea();
             Double totalPrice = getTotalPrice();
@@ -46,11 +46,11 @@ public class TradeManageInsert {
             tradeManage.setMprice(mprice);
             tradeManage.setTotalPrice(totalPrice);
             tradeManage.setIsLoan(getIsLoan());
-            tradeManage.setServiceFeeType("代办过户、签约服务、银行贷款");
+            tradeManage.setServiceFeeType("三项服务");
             tradeManage.setChargedMoney(3000.0);
             tradeManage.setChargeTime(chargeTime);
             tradeManage.setHouseAgent(getHouseAgent());
-            tradeManage.setServicePerson("陈信洋");
+            tradeManage.setServicePerson(getServiceMan());
             tradeManage.setCustomerServiceIn("无");
             tradeManage.setDoneTime(chargeTime);
             tradeManage.setTracking("无");
@@ -83,9 +83,9 @@ public class TradeManageInsert {
 
         //获取名字
         public static String getName(){
-            String[] familyName = {"赵","朱","孙","钱","李","梁","沙","白","王","陈","乐","孔","郑","周","吴","刘","魏","代","牛","杨","葛","马","范","张","树","何"};
+            String[] familyName = {"赵","赵","赵","朱","孙","孙","孙","钱","李","李","李","李","李","梁","白","王","王","王","王","陈","孔","郑","周","吴","刘","魏","代","牛","杨","葛","马","范","张","张","张","张","张","何","贾","胡","袁","国","时","戚","洒","田","靳"};
             String[] middleName = {"雯","海","鹏","丽","国","君","悦","凯","桂","运","其","开","真","传","爱","德","兴","智","东","浩","诗","志","新","玉","梦","德","琦","晨","辰","颖","庆","玉"};
-            String[] lastName = {"","东","鹏","思","乐","强","晓","荣","健","胜","雨","树","环","山","桃","涛","源","华","芝","伟","蓝","泉","宇","恒","民","洁","英","河","飞","顺","平","峰","勇","楚"};
+            String[] lastName = {"","","","","","","东","鹏","思","乐","强","晓","荣","健","胜","雨","树","环","山","桃","涛","源","华","芝","伟","蓝","泉","宇","恒","民","洁","英","河","飞","顺","平","峰","勇","楚","娟","明","翠","慧","美","梅","芳","东","希","楠","齐","琦","健","锋"};
 
             String family =  familyName[(int)(Math.random()*familyName.length)];
             String middle = middleName[(int)(Math.random()*middleName.length)];
@@ -115,7 +115,7 @@ public class TradeManageInsert {
 
         public static String getAdress(){
 
-            String[] addresses = {"泰安三合御都","安居上上城","巨菱枫景园","国华时代","三里小区","乐园小区","灵芝小区","苹果园小区","恒大城小区","泰山公馆","东岳小区","普照佳苑","王庄小区","长城小区","华易青年城","御景龙城","东湖小区","泰山华侨城","圣地公寓","膏城花园","清真寺小区","清华苑","鲁郡嘉源","嘉和新城","九州家园","三联小区","五环小区","城中城","科大东院","华新新城","天外村","长城东区","新华城南郡","圣源美郡","灵芝街小区","灵山佳苑","尚座国际","鲁郡嘉苑","龙城国际","华侨城","花园洲","宝龙城市广场","武警佳苑","普照小区","青山乐园","东关交警宿舍","山景尚宅","科山路单位房","南关小区","东岳鑫城","世纪康城","天龙国际大厦","公安局宿舍","记者村","文化路单位宿舍","龙泉小区","华新和园","擂鼓石花园","煤田家苑","迎春社区"};
+            String[] addresses = {"泰安三合御都","安居上上城","巨菱枫景园","国华时代","三里小区","乐园小区","灵芝小区","苹果园小区","恒大城小区","泰山公馆","东岳小区","普照家园","王庄小区","长城小区","华易青年城","御景龙城","东湖小区","泰山华侨城","圣地公寓","膏城花园","清真寺小区","清华苑","鲁郡嘉源","嘉和新城","九州家园","三联小区","五环小区","城中城","科大东院","华新新城","天外村","长城东区","新华城南郡","圣源美郡","灵芝街小区","灵山佳苑","尚座国际","名仕尚座","龙城国际","华侨城","花园洲","宝龙城市广场","武警佳苑","普照小区","青山乐园","奥林匹克花园","山景尚宅","糖茶站宿舍","南关小区","东岳鑫城","世纪康城","彩虹花园","交巡警宿舍","记者村","山景叠院","龙泉小区","华新和园","擂鼓石花园","煤田家苑","迎春社区"};
 
             String address = addresses[(int)(Math.random()*addresses.length)];
 
@@ -133,16 +133,17 @@ public class TradeManageInsert {
             String[] days = {"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
 
 
-            String year = years[(int)(Math.random()*years.length)];
+          /*  String year = years[(int)(Math.random()*years.length)];*/
+            String year = "2016";
+            String month = "05";
 
-            String month = null;
-
-            if(year=="2015" || year.equals("2015")){
-                 month = months[(int)(Math.random()*6+6)];
+/*            if(year=="2015" || year.equals("2015")){
+                 month = months[(int)(Math.random()*8+4)];
             }else{
 
-                 month = months[(int)(Math.random()*4+1)];
-            }
+                 month = months[(int)(Math.random()*5)];
+            }*/
+
 
             String day = days[(int)(Math.random()*days.length)];
 
@@ -158,7 +159,7 @@ public class TradeManageInsert {
 
         public static String getDec(){
 
-            String[] decs = {"精装修","简装","毛坯","无配套","豪华装修"};
+            String[] decs = {"精装修","简装","毛坯","豪华装修","中档装修"};
             String dec = decs[(int)(Math.random()*decs.length)];
 
             return dec;
@@ -167,7 +168,7 @@ public class TradeManageInsert {
 
         public static Double getArea(){
 
-            Double d1 = (Math.random()*120+30);
+            Double d1 = (Math.random()*90+70);
 
             BigDecimal bigDecimal = new BigDecimal(d1);
 
@@ -178,7 +179,7 @@ public class TradeManageInsert {
 
     public static Double getTotalPrice(){
 
-        Double d1 = (Math.random()*100+30);
+        Double d1 = (Math.random()*185+32);
 
         BigDecimal bigDecimal = new BigDecimal(d1);
 
@@ -188,7 +189,7 @@ public class TradeManageInsert {
 
     public static String  getHouseAgent(){
 
-        String[] agents = {"赵宇","郑进东","耿志兴","陈信洋","白建涛","李子锟","张强","孔德胜","张仁彬","韩竟"};
+        String[] agents = {"赵宇","郑进东","耿志兴","陈信洋","白建涛","李子锟","张强","孔德胜","张仁彬","韩竟","宋筱","朱振","刘青","时晓","薛丹丹","武大钊","李健鹏","李峰","刘甲","任延荣","周玲"};
 
         String agent = agents[(int)(Math.random()*agents.length)];
 
@@ -198,11 +199,21 @@ public class TradeManageInsert {
 
     public static String getIsLoan(){
 
-        String[] isLoans = {"商贷20万20年","商贷40万20年","商贷30万20年","公积金贷款","没有贷款"};
+        String[] isLoans = {"商业贷款","公积金贷款","一次性付款"};
 
         String isLoan = isLoans[(int)(Math.random()*isLoans.length)];
 
         return isLoan;
+    }
+
+    public static String getServiceMan(){
+
+        String[] serviceMans = {"陈信洋","孔德胜"};
+
+        String serviceMan = serviceMans[(int)(Math.random()*serviceMans.length)];
+
+        return  serviceMan;
+
     }
 
 }
