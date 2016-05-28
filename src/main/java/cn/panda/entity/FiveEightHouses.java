@@ -17,7 +17,9 @@ public class FiveEightHouses {
     String publishDate; //发布时间
     String price;       //售价
     String houseType;   //户型
-    String location;    //位置，如泰山区，岱岳区
+    String quyu;    //区域，如泰山区，岱岳区
+    String jiedao;     //街道
+    String villageName;   //小区名
     String houseAdress; //房屋地址
     String contactName; //联系人
     String phone;       //手机号
@@ -34,6 +36,44 @@ public class FiveEightHouses {
     Date addDate;     //添加日期
     Integer isDelete;    //是否被删除
     Integer isUsed;      //是否被用过
+
+
+    //toString
+
+    @Override
+    public String toString() {
+        return "FiveEightHouses{" +
+                "id=" + id +
+                ", originalLink='" + originalLink + '\'' +
+                ", title='" + title + '\'' +
+                ", publishDate='" + publishDate + '\'' +
+                ", price='" + price + '\'' +
+                ", houseType='" + houseType + '\'' +
+                ", quyu='" + quyu + '\'' +
+                ", jiedao='" + jiedao + '\'' +
+                ", villageName='" + villageName + '\'' +
+                ", houseAdress='" + houseAdress + '\'' +
+                ", contactName='" + contactName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", decType='" + decType + '\'' +
+                ", houseCategory='" + houseCategory + '\'' +
+                ", keepYear='" + keepYear + '\'' +
+                ", floor='" + floor + '\'' +
+                ", buildYear='" + buildYear + '\'' +
+                ", orientation='" + orientation + '\'' +
+                ", description='" + description + '\'' +
+                ", imgUlr='" + imgUlr + '\'' +
+                ", buildStructure='" + buildStructure + '\'' +
+                ", houseSellingType='" + houseSellingType + '\'' +
+                ", addDate=" + addDate +
+                ", isDelete=" + isDelete +
+                ", isUsed=" + isUsed +
+                '}';
+    }
+
+
+    //toString
+
 
     public Long getId() {
         return id;
@@ -83,12 +123,28 @@ public class FiveEightHouses {
         this.houseType = houseType;
     }
 
-    public String getLocation() {
-        return location;
+    public String getQuyu() {
+        return quyu;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setQuyu(String quyu) {
+        this.quyu = quyu;
+    }
+
+    public String getJiedao() {
+        return jiedao;
+    }
+
+    public void setJiedao(String jiedao) {
+        this.jiedao = jiedao;
+    }
+
+    public String getVillageName() {
+        return villageName;
+    }
+
+    public void setVillageName(String villageName) {
+        this.villageName = villageName;
     }
 
     public String getHouseAdress() {

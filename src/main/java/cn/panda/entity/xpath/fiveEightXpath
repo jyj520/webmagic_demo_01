@@ -8,56 +8,94 @@
                 //div[@class='col detailPrimary mb15']//div[@class='mainTitle']//div[@class='mtit_con c_999 f12 clearfix']//ul[@class='mtit_con_left fl']//li[@class='time']
 
                  price;       //售价
-                //div[@class='su_con']//span[@class='bigpri arial']
+                 //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[1]//div[@class='su_con']//span[@class='bigpri arial']/text()
+
 
                  houseType;   //户型
-                //div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary']//ul[@class='suUl']//li[4]//div[@class='su_con']
+                //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[4]//div[@class='su_con']/text()
 
-                 location;    //位置，如泰山区，岱岳区
-                
 
-                 houseAdress; //房屋地址
+                 quyu;    //位置，如泰山区，岱岳区
+                //div[6]/section[1]/div[1]/div[2]/div[2]/ul/li[5]
 
+                 //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//a[1]/text()
+
+                    jiedao //街道
+                //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//a[2]/text()
+
+
+                 villageName; //小区名
+                //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//text()
+
+
+                //houseAdress; //地址
+                        有小区名时
+                      //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[6]//div[@class='su_con su_gbconwidth']/text()
+
+                        无小区名时
+                      //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//div[@class='su_con su_gbconwidth']/text()
 
                  contactName; //联系人
+                //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[@class='liv0']//div[@class='su_con']//span//a/text()
+
 
 
                  phone;       //手机号
 
+                   //有小区名时
+                          //有地址时
+                        //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[9]//div[@class='su_con']//div[@id='movebar']//ul//li[@class='ico_tel']//div[@class='su_phone']//span[@class='f20 arial c_e22']//img/@src
+                          //无地址时
+                        //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[8]//div[@class='su_con']//div[@id='movebar']//ul//li[@class='ico_tel']//div[@class='su_phone']//span[@class='f20 arial c_e22']//img/@src
+                   //无小区名时
+                          //有地址
+                            //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[8]//div[@class='su_con']//div[@id='movebar']//ul//li[@class='ico_tel']//div[@class='su_phone']//span[@class='f20 arial c_e22']//img/@src
+                          //无地址时
+                            //div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[7]//div[@class='su_con']//div[@id='movebar']//ul//li[@class='ico_tel']//div[@class='su_phone']//span[@class='f20 arial c_e22']//img/@src
+
+
 
                  decType;     //装修类型
+                 //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[1]/ul/li[4]
 
+                 //div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div//ul//li[1]//ul//li[4]//text()
 
                  houseCategory;   //住宅类别
-
+                //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[1]/ul/li[2]
 
                  keepYear;      // 产权
-
+                //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[4]/ul/li[2]
 
                  floor;       //楼层
-
+                //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[3]/ul/li[4]
 
                  buildYear;   //建筑年代
-
+                //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[3]/ul/li[2]
 
                  orientation; //朝向
-
+                //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[4]/ul/li[4]
 
                  description; //描述
+
+                //div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionBox']//article[@class='description_con ']//p[1]/text()
+
 
 
                  imgUlr;      //房屋照片
 
+                //div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionImg']//img/@src
+
+
 
                  buildStructure; //建筑结构
-
+                 //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[2]/ul/li[4]
 
                  houseSellingType; //房屋类型
-
+                //div[6]/section[1]/div[1]/div[4]/section/div[1]/div/ul/li[2]/ul/li[2]
 
 
                  //后期生成
-                      id;
+                 id;
                  addDate;     //添加日期
                  isDelete;    //是否被删除
                  isUsed;      //是否被用过
