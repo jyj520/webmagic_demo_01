@@ -116,7 +116,15 @@ public class FiveEightSpiderTest implements PageProcessor {
             //朝向
             String orientation = page.getHtml().xpath("//div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div//ul//li[4]//ul//li[4]//text()").toString();
             //描述
-            String description = page.getHtml().xpath("//div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionBox']//article[@class='description_con ']//p[1]/text()").toString();
+            List<String> descriptions = page.getHtml().xpath("//div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionBox']//article[@class='description_con ']//p/text()").all();
+            String description = "";
+            if(descriptions.size()>0){
+                for(int x= 0;x<descriptions.size();x++){
+                    description = description+" , "+descriptions.get(x).replace("联系我时，请说是在58同城上看到的，谢谢！","").replace(",  , ","");
+                }
+            }
+
+
             //图片链接
             List<String> imgUlrs = page.getHtml().xpath("//div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionImg']//img/@src").all();
             String   imgUlrString = "";
