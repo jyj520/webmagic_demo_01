@@ -2,27 +2,34 @@
 
     房源entity
 
-        originalLink    原始链接
-        title       标题
-        publishDate 发布时间
-        price       售价
-        houseType   户型
-        location    位置，如泰山区，岱岳区
-        houseAdress 房屋地址
-        contactName 联系人
-        phone       手机号
-        decType     装修类型
-        houseCategory   住宅类别
-        keepYear       产权
-        floor       楼层
-        buildYear   建筑年代
-        orientation 朝向
-        description 描述
-        imgUlr      房屋照片
-        buildStructure 建筑结构
-        houseSellingType 房屋类型
-        addDate     添加日期
-        isDelete    是否被删除
-        isUsed      是否被用过
+
+
+
+
+
+
+
+/html/body/div[6]/section[1]/div[1]/div[4]/section/div[2]/div[1]/article/p[2]/span
+
+/html/body/div[6]/section[1]/div[1]/div[4]/section/div[2]/div[1]/article/p[1]
+
+/html/body/div[6]/section[1]/div[1]/div[4]/section/div[2]/div[1]/article/p[2]/span
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

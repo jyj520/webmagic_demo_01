@@ -1,12 +1,15 @@
 package cn.panda.test01;
 
+import cn.panda.dao.FiveEightHousesDao;
 import cn.panda.entity.FiveEightHouses;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,7 +32,10 @@ public class FiveEightSpiderTest implements PageProcessor {
 
     private String houseLink = "http://ta.58.com/ershoufang/\\w+.shtml";
 
-    private int i = 0;
+    private FiveEightHousesDao fiveEightHousesDao = new FiveEightHousesDao();
+
+
+    private int i = 1;
 
     private Site site = Site.me().
             setCharset("utf-8").
@@ -151,7 +157,6 @@ public class FiveEightSpiderTest implements PageProcessor {
             fiveEightHouses.setContactName(contactName);
             fiveEightHouses.setHouseAdress(houseAdress);
             fiveEightHouses.setPhone(phone);
-
             fiveEightHouses.setDecType(decType);
             fiveEightHouses.setHouseCategory(houseCategory);
             fiveEightHouses.setKeepYear(keepYear);
@@ -162,8 +167,19 @@ public class FiveEightSpiderTest implements PageProcessor {
             fiveEightHouses.setImgUlr(imgUlrString);
             fiveEightHouses.setBuildStructure(buildStructure);
             fiveEightHouses.setHouseSellingType(houseSellingType);
+            fiveEightHouses.setAddDate(new Date());
+            fiveEightHouses.setIsDelete(0);
+            fiveEightHouses.setIsUsed(0);
 
             System.out.println(fiveEightHouses);
+
+            try {
+                fiveEightHousesDao.add(fiveEightHouses);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
             System.out.println("第"+(i++)+"条");
         }
@@ -177,9 +193,15 @@ public class FiveEightSpiderTest implements PageProcessor {
     }
 
 
+    //去重
+
+
+
     public static void main(String[] args) {
 
-        Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").addPipeline(new ConsolePipeline()).thread(5).run();
+        Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").
+                setScheduler(new FileCacheQueueScheduler("D:\\58houses")).
+                thread(5).run();
 
     }
 }
