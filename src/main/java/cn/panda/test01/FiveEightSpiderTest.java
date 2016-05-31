@@ -2,6 +2,7 @@ package cn.panda.test01;
 
 import cn.panda.dao.FiveEightHousesDao;
 import cn.panda.entity.FiveEightHouses;
+import cn.panda.utils.RefreshLinks;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -197,6 +198,12 @@ public class FiveEightSpiderTest implements PageProcessor {
     public static void main(String[] args) throws IOException {
         //文件路径
         String filePathAndName = "d:\\58houses\\ta.58.com.urls.txt";
+        //列表页链接的正则
+        String linkRegex = "http://ta.58.com/ershoufang/0/\\w*";
+
+        System.out.println(RefreshLinks.deletePageLinks(filePathAndName,linkRegex));
+
+        /**
         //StringBuffer
         StringBuffer stringBuffer = new StringBuffer();
         //Reader
@@ -238,7 +245,7 @@ public class FiveEightSpiderTest implements PageProcessor {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
+            */
 
         //运行spider
         Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").
@@ -246,4 +253,22 @@ public class FiveEightSpiderTest implements PageProcessor {
                 thread(5).run();
 
     }
+
+
+    //重新封装spider
+
+        public static void fiveeightSpider() throws IOException {
+
+            //文件路径
+            String filePathAndName = "d:\\58houses\\ta.58.com.urls.txt";
+            //列表页链接的正则
+            String linkRegex = "http://ta.58.com/ershoufang/0/\\w*";
+            //返回刷新链接管理txt的结果
+            System.out.println(RefreshLinks.deletePageLinks(filePathAndName,linkRegex));
+            //运行spider
+            Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").
+                    setScheduler(new FileCacheQueueScheduler("D:\\58houses")).
+                    thread(5).run();
+        }
+
 }
