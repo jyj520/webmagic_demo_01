@@ -1,4 +1,4 @@
-CREATE TABLE fiveeighthouse
+CREATE TABLE mfiveeighthouse
 (
   id               INT AUTO_INCREMENT PRIMARY KEY,
   originalLink     VARCHAR(255),
@@ -8,6 +8,8 @@ CREATE TABLE fiveeighthouse
   houseType        VARCHAR(100),
   quyu             VARCHAR(100),
   jiedao           VARCHAR(100),
+  mprice            VARCHAR(100),
+  area              VARCHAR(100),
   villageName      VARCHAR(100),
   houseAdress      VARCHAR(100),
   contactName      VARCHAR(100),

@@ -79,5 +79,59 @@ public class FiveEightHousesDao {
 
     }
 
+    //移动版58房源，dao
+    public void madd(FiveEightHouses fiveEightHouses) throws SQLException, ClassNotFoundException {
+
+
+        //获取连接
+        Connection connection = houseSpiderFactory.getConnection();
+        //设置为不主动提交
+        connection.setAutoCommit(false);
+        //sql语句
+        String sql = "insert into mfiveeighthouse (originalLink,title,publishDate,price,mprice,area,contactName,phone,addDate,isDelete,isUsed) VALUES (?,?,?,?,?,?,?,?,now(),0,0)";
+        //创建PreparedStatement
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        //插入数据
+                 //原始链接
+        preparedStatement.setString(1,fiveEightHouses.getOriginalLink());
+                //标题
+        preparedStatement.setString(2,fiveEightHouses.getTitle());
+        //发布时间
+        preparedStatement.setString(3,fiveEightHouses.getPublishDate());
+        //售价
+        preparedStatement.setString(4,fiveEightHouses.getPrice());
+        //单价
+        preparedStatement.setString(5,fiveEightHouses.getMprice());
+        //面积
+        preparedStatement.setString(6,fiveEightHouses.getArea());
+        //联系人
+        preparedStatement.setString(7,fiveEightHouses.getContactName());
+        //手机号
+        preparedStatement.setString(8,fiveEightHouses.getPhone());
+
+        //执行
+        try {
+            preparedStatement.execute();
+            //提交
+            connection.commit();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+
+            //关闭语句
+            preparedStatement.close();
+            //关闭连接
+            connection.close();
+        }
+
+
+
+
+
+
+    }
+
 
 }

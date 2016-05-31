@@ -19,6 +19,12 @@ public class FiveEightHouses {
     String houseType;   //户型
     String quyu;    //区域，如泰山区，岱岳区
     String jiedao;     //街道
+
+    //追加
+    String mprice;      //单价
+    //追加
+    String area;        //面积
+
     String villageName;   //小区名
     String houseAdress; //房屋地址
     String contactName; //联系人
@@ -51,6 +57,8 @@ public class FiveEightHouses {
                 ", houseType='" + houseType + '\'' +
                 ", quyu='" + quyu + '\'' +
                 ", jiedao='" + jiedao + '\'' +
+                ", mprice='" + mprice + '\'' +
+                ", area='" + area + '\'' +
                 ", villageName='" + villageName + '\'' +
                 ", houseAdress='" + houseAdress + '\'' +
                 ", contactName='" + contactName + '\'' +
@@ -273,5 +281,21 @@ public class FiveEightHouses {
 
     public void setIsUsed(Integer isUsed) {
         this.isUsed = isUsed;
+    }
+
+    public String getMprice() {
+        return mprice;
+    }
+
+    public void setMprice(String mprice) {
+        this.mprice = mprice;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 }

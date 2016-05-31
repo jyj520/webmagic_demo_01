@@ -1,19 +1,53 @@
-爬虫抓取系统
+移动版58个人房源抓取
 
-    房源entity
+        entity
+
+                         //原始链接
+
+                         //标题
+
+                            /html/body/div[1]/section[1]/div[2]/div/h1
+
+                        //div[@class='body_div']//section[1]//div[@class='area-name whitebg']//div[@class='tit_area']//h1/text()
 
 
+                         //发布时间
+
+                             /html/body/div[1]/section[1]/div[2]/dl/dd[1]
+
+                         //div[@class='body_div']//section[1]//div[@class='area-name whitebg']//dl[@class='name-info']//dd[1]/text()
 
 
+                         //售价
+
+                               /html/body/div[1]/section[1]/div[4]/ul[1]/li[1]/i
+
+                          //div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//ul[@class='infor-price']//li[1]//i/text()
 
 
+                         //单价
+
+                         /html/body/div[1]/section[1]/div[4]/ul[3]/li[1]/i/span
+                        //div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//ul[@class='infor-other two-row']//li[1]//i[@class='black']//span[@id='unitprice']/text()
 
 
-/html/body/div[6]/section[1]/div[1]/div[4]/section/div[2]/div[1]/article/p[2]/span
+                        //面积
+                        /html/body/div[1]/section[1]/div[4]/ul[1]/li[3]/i
+                         //div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//ul[@class='infor-price']//li[3]//i/text()
 
-/html/body/div[6]/section[1]/div[1]/div[4]/section/div[2]/div[1]/article/p[1]
+                         //联系人
 
-/html/body/div[6]/section[1]/div[1]/div[4]/section/div[2]/div[1]/article/p[2]/span
+                         /html/body/div[1]/section[1]/div[4]/div[3]/ul/li[1]
+
+
+                         //div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//div[@class='infor-contact mtlr15']//ul[@class='contact']//li[@class='black']/text()
+
+
+                         //手机号
+
+                         /html/body/div[1]/section[1]/div[4]/div[3]/ul/li[2]
+
+                          //div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//div[@class='infor-contact mtlr15']//ul[@class='contact']//li[@class='yellow']/text()
 
 
 
