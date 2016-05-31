@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 public class HouseSpiderFactory {
 
-    private String DRIVER ="com.mysql.jdbc.Driver";
+    private String DRIVER = "com.mysql.jdbc.Driver";
     private String URL = "jdbc:mysql://localhost:3306/houses";
     private String USERNAME = "root";
     private String PASSWORD = "123456";
@@ -19,14 +19,13 @@ public class HouseSpiderFactory {
         Connection connection = null;
         Class.forName(DRIVER);
         try {
-            connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return connection;
     }
-
 
 
 }

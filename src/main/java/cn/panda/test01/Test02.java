@@ -14,13 +14,13 @@ import java.sql.SQLException;
 
 public class Test02 implements PageProcessor {
 
-   // public static final String URL_LIST = "http://blog\\.sina\\.com\\.cn/s/articlelist_1487828712_0_\\d+\\.html";
+    // public static final String URL_LIST = "http://blog\\.sina\\.com\\.cn/s/articlelist_1487828712_0_\\d+\\.html";
 
     public static final String URL_LIST_01 = "http://blog\\.sina\\.com\\.cn/s/articlelist_1242301364_0_\\d+\\.html";
 
     public static final String URL_POST = "http://blog\\.sina\\.com\\.cn/s/blog_\\w+\\.html";
 
-    int i =0;
+    int i = 0;
 
     BlogDao blogDao = new BlogDao();
 
@@ -30,6 +30,11 @@ public class Test02 implements PageProcessor {
             .setSleepTime(3000)
             .setUserAgent(
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31");
+
+    public static void main(String[] args) {
+        Spider.create(new Test02()).addUrl("http://blog.sina.com.cn/s/articlelist_1242301364_0_1.html")
+                .run();
+    }
 
     public void process(Page page) {
         //列表页
@@ -50,7 +55,7 @@ public class Test02 implements PageProcessor {
 
             String title2 = HtmlUntil.splitAndFilterString(title1);
             String content2 = HtmlUntil.splitAndFilterString(content1);
-            String date2 =  HtmlUntil.splitAndFilterString(date1);
+            String date2 = HtmlUntil.splitAndFilterString(date1);
 
             blog.setTitle(title2);
             blog.setContent(content2);
@@ -65,7 +70,7 @@ public class Test02 implements PageProcessor {
             }
 
 
-            System.out.println(i+">>>"+title2+">>>"+content2+">>>"+date2);
+            System.out.println(i + ">>>" + title2 + ">>>" + content2 + ">>>" + date2);
             /*
             page.putField("title", page.getHtml().xpath("//div[@class='articalTitle']/h2"));
             page.putField("content", page.getHtml().xpath("//div[@id='articlebody']//div[@class='articalContent']"));
@@ -75,13 +80,7 @@ public class Test02 implements PageProcessor {
         }
     }
 
-
     public Site getSite() {
         return site;
-    }
-
-    public static void main(String[] args) {
-        Spider.create(new Test02()).addUrl("http://blog.sina.com.cn/s/articlelist_1242301364_0_1.html")
-                .run();
     }
 }

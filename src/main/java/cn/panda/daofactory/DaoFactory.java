@@ -9,24 +9,23 @@ import java.sql.SQLException;
  */
 public class DaoFactory {
 
-    private String DRIVER ="com.mysql.jdbc.Driver";
+    private String DRIVER = "com.mysql.jdbc.Driver";
     private String URL = "jdbc:mysql://localhost:3306/blog";
     private String USERNAME = "root";
     private String PASSWORD = "123456";
 
 
-        public Connection getConnection() throws ClassNotFoundException {
-            Connection connection = null;
-            Class.forName(DRIVER);
-            try {
-                connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            return connection;
+    public Connection getConnection() throws ClassNotFoundException {
+        Connection connection = null;
+        Class.forName(DRIVER);
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
+        return connection;
+    }
 
 
 }

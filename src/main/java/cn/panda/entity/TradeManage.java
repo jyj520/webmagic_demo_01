@@ -32,7 +32,6 @@ public class TradeManage {
     private Integer isDelete;           //是否删除
 
 
-
     //toString开始
 
     @Override

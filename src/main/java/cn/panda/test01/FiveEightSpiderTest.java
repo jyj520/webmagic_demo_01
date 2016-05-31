@@ -8,8 +8,8 @@ import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
+import java.io.*;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,7 +42,7 @@ public class FiveEightSpiderTest implements PageProcessor {
             setRetryTimes(3).
             setSleepTime(1000).
             setTimeOut(3000).
-            addHeader("Referer","http://ta.58.com/ershoufang").
+            addHeader("Referer", "http://ta.58.com/ershoufang").
             setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0");
 
 
@@ -74,18 +74,18 @@ public class FiveEightSpiderTest implements PageProcessor {
             //街道
             String jiedao = page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//a[2]/text()").toString();
             //小区名
-            String villageName = page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//text()").toString().replace("-","").trim();
+            String villageName = page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//text()").toString().replace("-", "").trim();
 
             //地址
 
-            String houseAdress1= page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//div[@class='su_con su_gbconwidth']/text()").toString();
-            String houseAdress2= page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[6]//div[@class='su_con su_gbconwidth']/text()").toString();
+            String houseAdress1 = page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[5]//div[@class='su_con su_gbconwidth']/text()").toString();
+            String houseAdress2 = page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[6]//div[@class='su_con su_gbconwidth']/text()").toString();
 
             String houseAdress = null;
-            if(houseAdress1==null && houseAdress2 != null){
-                 houseAdress = houseAdress2;
-            }else if(houseAdress1 != null && houseAdress2 == null){
-                 houseAdress = houseAdress1;
+            if (houseAdress1 == null && houseAdress2 != null) {
+                houseAdress = houseAdress2;
+            } else if (houseAdress1 != null && houseAdress2 == null) {
+                houseAdress = houseAdress1;
             }
 
             //联系人
@@ -97,16 +97,14 @@ public class FiveEightSpiderTest implements PageProcessor {
             String phone3 = page.getHtml().xpath("//div[@id='content']//section[@id='main']//div[@class='col detailPrimary mb15']//div[@class='col_sub maintop mb30 clearfix']//div[@class='col_sub sumary ']//ul[@class='suUl']//li[7]//div[@class='su_con']//div[@id='movebar']//ul//li[@class='ico_tel']//div[@class='su_phone']//span[@id='t_phone']//img/@src").toString();
 
 
-
-            String phone =  null;
-            if(phone1 !=null){
-                phone= phone1;
-            }else if(phone2 != null){
+            String phone = null;
+            if (phone1 != null) {
+                phone = phone1;
+            } else if (phone2 != null) {
                 phone = phone2;
-            }else if(phone3 != null){
+            } else if (phone3 != null) {
                 phone = phone3;
             }
-
 
 
             //装修类型
@@ -124,19 +122,19 @@ public class FiveEightSpiderTest implements PageProcessor {
             //描述
             List<String> descriptions = page.getHtml().xpath("//div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionBox']//article[@class='description_con ']//p/text()").all();
             String description = "";
-            if(descriptions.size()>0){
-                for(int x= 0;x<descriptions.size();x++){
-                    description = description+" , "+descriptions.get(x).replace("联系我时，请说是在58同城上看到的，谢谢！","").replace(",  , ","");
+            if (descriptions.size() > 0) {
+                for (int x = 0; x < descriptions.size(); x++) {
+                    description = description + " , " + descriptions.get(x).replace("联系我时，请说是在58同城上看到的，谢谢！", "").replace(",  , ", "");
                 }
             }
 
 
             //图片链接
             List<String> imgUlrs = page.getHtml().xpath("//div[@class='col_sub description']//section[@class='des_con']//div[@class='cur']//div[@class='descriptionImg']//img/@src").all();
-            String   imgUlrString = "";
-            if(imgUlrs.size()>0){
-                for(int y = 0;y<imgUlrs.size();y++){
-                    imgUlrString = imgUlrString+" , "+imgUlrs.get(y);
+            String imgUlrString = "";
+            if (imgUlrs.size() > 0) {
+                for (int y = 0; y < imgUlrs.size(); y++) {
+                    imgUlrString = imgUlrString + " , " + imgUlrs.get(y);
                 }
             }
             //建筑结构
@@ -167,7 +165,7 @@ public class FiveEightSpiderTest implements PageProcessor {
             fiveEightHouses.setImgUlr(imgUlrString);
             fiveEightHouses.setBuildStructure(buildStructure);
             fiveEightHouses.setHouseSellingType(houseSellingType);
-            fiveEightHouses.setAddDate(new Date());
+            // fiveEightHouses.setAddDate(new Date());
             fiveEightHouses.setIsDelete(0);
             fiveEightHouses.setIsUsed(0);
 
@@ -181,24 +179,68 @@ public class FiveEightSpiderTest implements PageProcessor {
                 e.printStackTrace();
             }
 
-            System.out.println("第"+(i++)+"条");
+            System.out.println("第" + (i++) + "条");
         }
 
 
         // 部分三：从页面发现后续的url地址来抓取
     }
 
+
+    //去重
+
     public Site getSite() {
         return site;
     }
 
+    //程序主入口
+    public static void main(String[] args) throws IOException {
+        //文件路径
+        String filePathAndName = "d:\\58houses\\ta.58.com.urls.txt";
+        //StringBuffer
+        StringBuffer stringBuffer = new StringBuffer();
+        //Reader
+        Reader reader = null;
+        //BufferReader
+        BufferedReader bufferedReader = null;
+        //File
+        File file = new File(filePathAndName);
+        if(!file.exists()){
+            file.createNewFile();
+        }
 
-    //去重
+        try {
+            reader = new FileReader(filePathAndName);
+
+            bufferedReader = new BufferedReader(reader);
+
+            String txtline = null;
+
+            while ((txtline = bufferedReader.readLine()) != null) {
+                stringBuffer.append(txtline + "\n");
+            }
+
+            String txtString = stringBuffer.toString();
+            txtString = txtString.replaceAll("http://ta.58.com/ershoufang/0/\\w*\n", "");
 
 
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 
-    public static void main(String[] args) {
 
+            if (file.exists()) {
+                file.delete();
+                file.createNewFile();
+                bufferedWriter.write(txtString);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //运行spider
         Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").
                 setScheduler(new FileCacheQueueScheduler("D:\\58houses")).
                 thread(5).run();

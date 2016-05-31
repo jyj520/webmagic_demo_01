@@ -27,8 +27,19 @@ public class Test05 implements PageProcessor {
             .setDomain("https://www.zhihu.com")
             .addHeader("Refer", "https://www.zhihu.com");
 
-    public void process(Page page) {
+    public static void main(String args[]) {
+        String startUrl = "https://www.zhihu.com/people/kaifulee/";
 
+        Spider.create(new Test05())
+                .addUrl(startUrl)
+                .addPipeline(new ConsolePipeline())
+                //.addPipeline(new JsonFilePipeline("zhihu-people.json"))
+                .addPipeline(new FilePipeline("D:\\webmagic\\hello.text"))
+                .thread(1)
+                .run();
+    }
+
+    public void process(Page page) {
 
 
         //target url
@@ -94,17 +105,5 @@ public class Test05 implements PageProcessor {
 
     public Site getSite() {
         return site;
-    }
-
-    public static void main(String args[]) {
-        String startUrl = "https://www.zhihu.com/people/kaifulee/";
-
-        Spider.create(new Test05())
-                .addUrl(startUrl)
-                .addPipeline(new ConsolePipeline())
-                //.addPipeline(new JsonFilePipeline("zhihu-people.json"))
-                .addPipeline(new FilePipeline("D:\\webmagic\\hello.text"))
-                .thread(1)
-                .run();
     }
 }

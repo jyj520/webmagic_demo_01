@@ -4,7 +4,6 @@ import cn.panda.daofactory.HouseSpiderFactory;
 import cn.panda.entity.FiveEightHouses;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -31,7 +30,7 @@ public class FiveEightHousesDao {
                 " orientation, description, imgUlr, buildStructure, " +
                 "houseSellingType, addDate, isDelete, isUsed) " +
                 "values(?,?,?,?,?,?,?,?,?,?," +
-                "?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "?,?,?,?,?,?,?,?,?,?,?,now(),?,?)";
         //创建PreparedStatement
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -57,9 +56,9 @@ public class FiveEightHousesDao {
         preparedStatement.setString(19, fiveEightHouses.getImgUlr());
         preparedStatement.setString(20, fiveEightHouses.getBuildStructure());
         preparedStatement.setString(21, fiveEightHouses.getHouseSellingType());
-        preparedStatement.setDate(22, new Date(fiveEightHouses.getAddDate().getTime()));
-        preparedStatement.setInt(23, fiveEightHouses.getIsDelete());
-        preparedStatement.setInt(24, fiveEightHouses.getIsUsed());
+        //preparedStatement.setString(22, "now()");
+        preparedStatement.setInt(22, fiveEightHouses.getIsDelete());
+        preparedStatement.setInt(23, fiveEightHouses.getIsUsed());
 
         //执行
         try {
