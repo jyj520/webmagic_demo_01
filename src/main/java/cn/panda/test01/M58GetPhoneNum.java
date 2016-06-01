@@ -13,7 +13,8 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class M58GetPhoneNum implements PageProcessor {
 
 
-    private static String returnPhone = null;
+
+    private static String[] returnData = new String[3];
 
     private Site site = Site.me().
             setRetryTimes(3).
@@ -28,7 +29,19 @@ public class M58GetPhoneNum implements PageProcessor {
         //手机号
         String phone = page.getHtml().xpath("//div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//div[@class='infor-contact mtlr15']//ul[@class='contact']//li[@class='yellow']/text()").toString();
 
-        returnPhone = phone;
+        //面积
+
+        String area = page.getHtml().xpath("//div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//ul[@class='infor-price']//li[3]//i/text()").toString();
+
+        //单价
+
+        String mprice = page.getHtml().xpath("//div[@class='body_div']//section[1]//div[@class='area-infor whitebg mt15']//ul[@class='infor-other two-row']//li[1]//i[@class='black']//span[@id='unitprice']/text()").toString();
+
+
+        returnData[0] = phone;
+        returnData[1] = area;
+        returnData[2] = mprice;
+
 
     }
 
@@ -44,11 +57,11 @@ public class M58GetPhoneNum implements PageProcessor {
     }
 
 
-    public static String getPhoneNum(String targetLink){
+    public static String[] getPhoneNum(String targetLink){
 
         Spider.create(new M58GetPhoneNum()).addUrl(targetLink).thread(1).run();
 
-        return returnPhone;
+        return returnData;
 
     }
 

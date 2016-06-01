@@ -70,9 +70,20 @@ public class FiveEightSpiderTest implements PageProcessor {
             //M版58链接
 
             String mlink = "http://m.58.com/ta/ershoufang/"+onlyId+".shtml";
-            //获取phoneNum
-            String phoneNum = M58GetPhoneNum.getPhoneNum(mlink);
 
+            //获取returnData
+
+            String[] data = M58GetPhoneNum.getPhoneNum(mlink);
+
+            //获取phoneNum
+            String phoneNum = data[0];
+
+
+            //面积
+            String area = data[1];
+
+            //单价
+            String mprice = data[2];
 
             //标题
             String title = page.getHtml().xpath("//div[@class='col detailPrimary mb15']//div[@class='mainTitle']//div[@class='bigtitle']//h1/text()").toString();
@@ -172,6 +183,13 @@ public class FiveEightSpiderTest implements PageProcessor {
             fiveEightHouses.setContactName(contactName);
             fiveEightHouses.setHouseAdress(houseAdress);
             fiveEightHouses.setPhone(phoneNum);
+
+            //面积
+            fiveEightHouses.setArea(area);
+
+            //单价
+            fiveEightHouses.setMprice(mprice);
+
             fiveEightHouses.setDecType(decType);
             fiveEightHouses.setHouseCategory(houseCategory);
             fiveEightHouses.setKeepYear(keepYear);
@@ -262,6 +280,13 @@ public class FiveEightSpiderTest implements PageProcessor {
             throw new RuntimeException(e);
         }
             */
+
+        //文件路径
+        String filePathAndName = "d:\\58houses\\ta.58.com.urls.txt";
+        //列表页链接的正则
+        String linkRegex = "http://ta.58.com/ershoufang/0/\\w*";
+        //返回刷新链接管理txt的结果
+        System.out.println(RefreshLinks.deletePageLinks(filePathAndName,linkRegex));
 
         //运行spider
         Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").

@@ -28,9 +28,9 @@ public class FiveEightHousesDao {
                 " houseAdress, contactName, phone, decType," +
                 " houseCategory, keepYear, floor, buildYear," +
                 " orientation, description, imgUlr, buildStructure, " +
-                "houseSellingType, addDate, isDelete, isUsed,onlyId) " +
+                "houseSellingType, addDate, isDelete, isUsed,onlyId,area,mprice) " +
                 "values(?,?,?,?,?,?,?,?,?,?," +
-                "?,?,?,?,?,?,?,?,?,?,?,now(),?,?,?)";
+                "?,?,?,?,?,?,?,?,?,?,?,now(),?,?,?,?,?)";
         //创建PreparedStatement
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -60,6 +60,8 @@ public class FiveEightHousesDao {
         preparedStatement.setInt(22, fiveEightHouses.getIsDelete());
         preparedStatement.setInt(23, fiveEightHouses.getIsUsed());
         preparedStatement.setString(24,fiveEightHouses.getOnlyId());
+        preparedStatement.setString(25,fiveEightHouses.getArea());
+        preparedStatement.setString(26,fiveEightHouses.getMprice());
 
         //执行
         try {
