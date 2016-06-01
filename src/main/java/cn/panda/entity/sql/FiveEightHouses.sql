@@ -1,6 +1,7 @@
-CREATE TABLE mfiveeighthouse
+CREATE TABLE fiveeighthouse
 (
-  id               INT AUTO_INCREMENT PRIMARY KEY,
+  id              INT(10) AUTO_INCREMENT PRIMARY KEY,
+  onlyId          VARCHAR(100) UNIQUE not null,
   originalLink     VARCHAR(255),
   title            VARCHAR(100),
   publishDate      VARCHAR(100),

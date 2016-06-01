@@ -12,6 +12,7 @@ import java.util.Date;
 public class FiveEightHouses {
 
     Long id;
+    String onlyId;
     String originalLink;    //原始链接
     String title;       //标题
     String publishDate; //发布时间
@@ -50,6 +51,7 @@ public class FiveEightHouses {
     public String toString() {
         return "FiveEightHouses{" +
                 "id=" + id +
+                ", onlyId='" + onlyId + '\'' +
                 ", originalLink='" + originalLink + '\'' +
                 ", title='" + title + '\'' +
                 ", publishDate='" + publishDate + '\'' +
@@ -89,6 +91,14 @@ public class FiveEightHouses {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getOnlyId() {
+        return onlyId;
+    }
+
+    public void setOnlyId(String onlyId) {
+        this.onlyId = onlyId;
     }
 
     public String getOriginalLink() {

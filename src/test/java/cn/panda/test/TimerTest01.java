@@ -1,6 +1,7 @@
 package cn.panda.test;
 
 import cn.panda.test01.FiveEightSpiderTest;
+import cn.panda.test01.NewFiveEightSpiderTest;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -16,7 +17,12 @@ public class TimerTest01 {
     public static void main(String[] args) {
 
         Timer timer = new Timer();
+
         timer.schedule(new Mytask(),1000,60*1000);
+
+        Timer timer01 = new Timer();
+
+        timer01.schedule(new MyTask01(),1000,20*1000);
 
     }
 
@@ -40,5 +46,25 @@ class Mytask extends TimerTask{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+}
+
+class MyTask01 extends  TimerTask{
+
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    public void run() {
+
+        //时间
+        System.out.println(simpleDateFormat.format(new Date()));
+
+        //运行爬虫
+
+        try {
+            NewFiveEightSpiderTest.runSpider();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
