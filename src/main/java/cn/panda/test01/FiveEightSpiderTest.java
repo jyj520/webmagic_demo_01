@@ -310,7 +310,7 @@ public class FiveEightSpiderTest implements PageProcessor {
             //运行spider
             Spider.create(new FiveEightSpiderTest()).addUrl("http://ta.58.com/ershoufang/0/").
                     setScheduler(new FileCacheQueueScheduler("D:\\58houses")).
-                    thread(5).run();
+                    thread(1).run();
         }
 
 }

@@ -18,11 +18,9 @@ public class TimerTest01 {
 
         Timer timer = new Timer();
 
-        timer.schedule(new Mytask(),1000,60*1000);
+        timer.schedule(new Mytask(),1000,60*1000*5);
 
-        Timer timer01 = new Timer();
 
-        timer01.schedule(new MyTask01(),1000,20*1000);
 
     }
 
