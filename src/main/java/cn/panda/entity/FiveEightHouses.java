@@ -2,9 +2,9 @@ package cn.panda.entity;
 
 import java.util.Date;
 
-/**
- * Created by Administrator on 2016/5/27 0027.
- */
+    /**
+     * Created by Administrator on 2016/5/27 0027.
+     */
 
 /**
  * 58房源
@@ -36,7 +36,7 @@ public class FiveEightHouses {
     String floor;       //楼层
     String buildYear;   //建筑年代
     String orientation; //朝向
-    String description; //描述
+    String description; //描述   可能描述很长
     String imgUlr;      //房屋照片
     String buildStructure; //建筑结构
     String houseSellingType; //房屋类型
@@ -44,6 +44,12 @@ public class FiveEightHouses {
     Integer isDelete;    //是否被删除
     Integer isUsed;      //是否被用过
 
+/**
+ * Created by dzs520zy 
+    ps: new property for count specified target 
+ */
+    String preClickNum;
+    String nowClickNum;
 
     //toString
 
@@ -83,7 +89,21 @@ public class FiveEightHouses {
 
 
     //toString
+    public String getPreClickNum(){
+        return preClickNum;
+    }
 
+    public String setPreClickNum(String PreClickNum){
+        return this.preClickNum=PreClickNum;
+    }
+
+    public String getNowClickNum(){
+        return nowClickNum;
+    }
+
+    public String setNowClickNum(String NowClickNum){
+        return this.nowClickNum=NowClickNum;
+    }
 
     public Long getId() {
         return id;

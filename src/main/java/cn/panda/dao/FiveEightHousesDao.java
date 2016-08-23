@@ -3,10 +3,13 @@ package cn.panda.dao;
 import cn.panda.daofactory.HouseSpiderFactory;
 import cn.panda.entity.FiveEightHouses;
 
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 /**
  * Created by Administrator on 2016/5/27 0027.
  */
@@ -14,26 +17,70 @@ public class FiveEightHousesDao {
 
     HouseSpiderFactory houseSpiderFactory = new HouseSpiderFactory();
 
+    //housesExist方法
+    /*
+    如果存在一个houselink记录,返回true
+    */
+    public boolean housesExist(FiveEightHouses fiveEightHouses) throws ClassNotFoundException, SQLException {
+        //获取连接
+        Connection connection = houseSpiderFactory.getConnection();
+        //设置为主动提交
+        connection.setAutoCommit(true);
+        String sql = "select originalLink,title,clickpre5,clickpre4,clickpre3,clickpre2,clickpre1,clicknow from FiveEightDB_dzs2 " + 
+        "where instr(ORIGINALLINK,"+fiveEightHouses.getOriginalLink()+
+            ")>0";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
+        ResultSet result = null;
+        //String[] stringExist = {};
+        //执行
+        try {
+            result=preparedStatement.executeQuery();
+            //提交
+            connection.commit();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+
+
+            //关闭语句
+            preparedStatement.close();
+            //关闭连接
+            connection.close();
+            while(result != null)
+            {
+                 return true;   
+            }
+
+            return false;
+        }
+}
+    //upGradeClickHeart方法
+    /*
+    存在一个houselink记录,更新ClickHeart
+    */
+   // public void upGradeClickHeart(FiveEightHouses fiveEightHouses) throws ClassNotFoundException, SQLException {
+
+      
+   // ｝
     //add方法
     public void add(FiveEightHouses fiveEightHouses) throws ClassNotFoundException, SQLException {
         //获取连接
         Connection connection = houseSpiderFactory.getConnection();
         //设置为不主动提交
         connection.setAutoCommit(false);
-        //sql语句
-        String sql = "insert IGNORE into fiveeighthouse " +
+        //创建PreparedStatement
+        String sql = "insert into FiveEightDB_dzs2 " +
                 "(originalLink,title,publishDate," +
                 " price, houseType, quyu, jiedao, villageName," +
                 " houseAdress, contactName, phone, decType," +
                 " houseCategory, keepYear, floor, buildYear," +
                 " orientation, description, imgUlr, buildStructure, " +
-                "houseSellingType, addDate, isDelete, isUsed,onlyId,area,mprice) " +
+                "houseSellingType, addDate, isDelete, isUsed,onlyId,area,mprice,clicknow) " +
                 "values(?,?,?,?,?,?,?,?,?,?," +
-                "?,?,?,?,?,?,?,?,?,?,?,now(),?,?,?,?,?)";
-        //创建PreparedStatement
+                "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
         //插入数据
         preparedStatement.setString(1, fiveEightHouses.getOriginalLink());
         preparedStatement.setString(2, fiveEightHouses.getTitle());
@@ -56,12 +103,17 @@ public class FiveEightHousesDao {
         preparedStatement.setString(19, fiveEightHouses.getImgUlr());
         preparedStatement.setString(20, fiveEightHouses.getBuildStructure());
         preparedStatement.setString(21, fiveEightHouses.getHouseSellingType());
-        //preparedStatement.setString(22, "now()");
-        preparedStatement.setInt(22, fiveEightHouses.getIsDelete());
-        preparedStatement.setInt(23, fiveEightHouses.getIsUsed());
-        preparedStatement.setString(24,fiveEightHouses.getOnlyId());
-        preparedStatement.setString(25,fiveEightHouses.getArea());
-        preparedStatement.setString(26,fiveEightHouses.getMprice());
+        Date dt = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String dateString = df.format(dt);
+        preparedStatement.setString(22, dateString);
+        preparedStatement.setInt(23, fiveEightHouses.getIsDelete());
+        preparedStatement.setInt(24, fiveEightHouses.getIsUsed());
+        preparedStatement.setString(25,fiveEightHouses.getOnlyId());
+        preparedStatement.setString(26,fiveEightHouses.getArea());
+        preparedStatement.setString(27,fiveEightHouses.getMprice());
+
+        preparedStatement.setString(28,fiveEightHouses.getNowClickNum());
 
         //执行
         try {
