@@ -9,10 +9,10 @@ import java.sql.SQLException;
  */
 public class HouseSpiderFactory {
 
-    private String DRIVER = "com.mysql.jdbc.Driver";
-    private String URL = "jdbc:mysql://localhost:3306/houses";
-    private String USERNAME = "root";
-    private String PASSWORD = "123456";
+    private String DRIVER = "oracle.jdbc.driver.OracleDriver";
+    private String URL = "jdbc:oracle:thin:@127.0.0.1:1521:test5";
+    private String USERNAME = "dzs1 as sysdba";
+    private String PASSWORD = "13414979009";
 
 
     public Connection getConnection() throws ClassNotFoundException {
